@@ -1,0 +1,8 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "react/no-unescaped-entities": "off", // Désactive les erreurs sur les caractères non échappés
+    "@next/next/no-img-element": "off", // Permet l'utilisation de <img> au lieu de <Image>
+    "react-hooks/exhaustive-deps": "warn" // Change les erreurs sur les dépendances des hooks en avertissements
+  }
+}

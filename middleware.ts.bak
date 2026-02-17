@@ -1,0 +1,59 @@
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+
+/**
+ * Middleware pour les redirections 301 SEO
+ * Redirige les anciennes URLs vers les nouvelles URLs optimisées
+ */
+
+// Mapping des redirections 301
+const redirects: Record<string, string> = {
+    // Pages catégories
+    '/solutions/affichages-led-transparents': '/film-led-transparent',
+    '/solutions/affichages-led-dynamisation': '/mur-led-interieur',
+    '/solutions/affichages-led-portables': '/ecran-led-portable',
+    '/solutions': '/film-led-transparent', // Redirection par défaut
+
+    // Produits - Catégorie Transparent
+    '/solutions/affichages-led-transparents/neofilm-adhesif': '/film-led-transparent/neofilm-adhesif',
+    '/solutions/affichages-led-transparents/rideau-led-transparent': '/film-led-transparent/rideau-led-transparent',
+
+    // Produits - Catégorie Dynamisation (Mur LED Intérieur)
+    '/solutions/affichages-led-dynamisation/mur-led-indoor': '/mur-led-interieur/mur-led-indoor',
+    '/solutions/affichages-led-dynamisation/ecran-flexible-led': '/mur-led-interieur/ecran-flexible-led',
+
+    // Produits - Catégorie Portable
+    '/solutions/affichages-led-portables/kakemono-led-pliable': '/ecran-led-portable/kakemono-led-pliable',
+    '/solutions/affichages-led-portables/totem-led-rotatif': '/ecran-led-portable/totem-led-rotatif',
+    '/solutions/affichages-led-portables/stand-led-roulant': '/ecran-led-portable/stand-led-roulant',
+
+    // Legacy /products path
+    '/products/neofilm': '/film-led-transparent/neofilm-adhesif',
+};
+
+export function middleware(request: NextRequest) {
+    const pathname = request.nextUrl.pathname;
+
+    // Vérifier si l'URL nécessite une redirection
+    if (redirects[pathname]) {
+        const newUrl = new URL(redirects[pathname], request.url);
+
+        // Conserver les query parameters si présents
+        request.nextUrl.searchParams.forEach((value, key) => {
+            newUrl.searchParams.set(key, value);
+        });
+
+        // Redirection 301 permanente
+        return NextResponse.redirect(newUrl, { status: 301 });
+    }
+
+    return NextResponse.next();
+}
+
+// Configuration du matcher pour cibler uniquement les URLs /solutions/*
+export const config = {
+    matcher: [
+        '/solutions/:path*',
+        '/products/:path*',
+    ],
+};

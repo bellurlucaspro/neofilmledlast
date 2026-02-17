@@ -1,0 +1,26 @@
+# REDIRECTIONS SEO POUR O2SWITCH / APACHE
+# À copier dans le fichier .htaccess à la racine du site (public_html)
+
+RewriteEngine On
+
+# 1. Redirections des catégories
+RewriteRule ^solutions/affichages-led-transparents/?$ /film-led-transparent/ [R=301,L]
+RewriteRule ^solutions/affichages-led-dynamisation/?$ /mur-led-interieur/ [R=301,L]
+RewriteRule ^solutions/affichages-led-portables/?$ /ecran-led-portable/ [R=301,L]
+RewriteRule ^solutions/?$ /film-led-transparent/ [R=301,L]
+
+# 2. Redirections des produits - Catégorie Transparent
+RewriteRule ^solutions/affichages-led-transparents/neofilm-adhesif/?$ /film-led-transparent/neofilm-adhesif/ [R=301,L]
+RewriteRule ^solutions/affichages-led-transparents/rideau-led-transparent/?$ /film-led-transparent/rideau-led-transparent/ [R=301,L]
+
+# 3. Redirections des produits - Catégorie Mur LED Intérieur
+RewriteRule ^solutions/affichages-led-dynamisation/mur-led-indoor/?$ /mur-led-interieur/mur-led-indoor/ [R=301,L]
+RewriteRule ^solutions/affichages-led-dynamisation/ecran-flexible-led/?$ /mur-led-interieur/ecran-flexible-led/ [R=301,L]
+
+# 4. Redirections des produits - Catégorie Portable
+RewriteRule ^solutions/affichages-led-portables/kakemono-led-pliable/?$ /ecran-led-portable/kakemono-led-pliable/ [R=301,L]
+RewriteRule ^solutions/affichages-led-portables/totem-led-rotatif/?$ /ecran-led-portable/totem-led-rotatif/ [R=301,L]
+RewriteRule ^solutions/affichages-led-portables/stand-led-roulant/?$ /ecran-led-portable/stand-led-roulant/ [R=301,L]
+
+# 5. Redirection legacy /products
+RewriteRule ^products/neofilm/?$ /film-led-transparent/neofilm-adhesif/ [R=301,L]
