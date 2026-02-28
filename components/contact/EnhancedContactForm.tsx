@@ -42,19 +42,71 @@ const EnhancedContactForm = () => {
 
     const [status, setStatus] = useState({ type: "", message: "" });
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [errors, setErrors] = useState<Record<string, string>>({});
 
     const totalSteps = 4;
+
+    const validateStep = (currentStep: number): boolean => {
+        const newErrors: Record<string, string> = {};
+
+        switch (currentStep) {
+            case 1:
+                if (!formData.prenom.trim()) newErrors.prenom = "Le prénom est requis";
+                if (!formData.nom.trim()) newErrors.nom = "Le nom est requis";
+                if (!formData.email.trim()) newErrors.email = "L'e-mail est requis";
+                else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = "L'e-mail n'est pas valide";
+                if (!formData.telephone.trim()) newErrors.telephone = "Le téléphone est requis";
+                if (!formData.entreprise.trim()) newErrors.entreprise = "Le nom de l'entreprise est requis";
+                if (!formData.secteur) newErrors.secteur = "Le secteur d'activité est requis";
+                break;
+            case 2:
+                if (!formData.solution) newErrors.solution = "Veuillez sélectionner une solution";
+                if (!formData.phase) newErrors.phase = "Veuillez sélectionner la phase du projet";
+                break;
+            case 3:
+                if (!formData.emplacement) newErrors.emplacement = "L'emplacement est requis";
+                if (!formData.ville.trim()) newErrors.ville = "La ville est requise";
+                if (!formData.largeur.trim()) newErrors.largeur = "La largeur est requise";
+                if (!formData.hauteur.trim()) newErrors.hauteur = "La hauteur est requise";
+                break;
+            case 4:
+                if (!formData.timing) newErrors.timing = "Le timing est requis";
+                if (!formData.budget) newErrors.budget = "Le budget est requis";
+                break;
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
+        if (errors[name]) {
+            setErrors((prev) => {
+                const next = { ...prev };
+                delete next[name];
+                return next;
+            });
+        }
     };
 
     const handleSelect = (name: string, value: string) => {
         setFormData((prev) => ({ ...prev, [name]: value }));
+        if (errors[name]) {
+            setErrors((prev) => {
+                const next = { ...prev };
+                delete next[name];
+                return next;
+            });
+        }
     };
 
-    const nextStep = () => setStep((s) => Math.min(s + 1, totalSteps));
+    const nextStep = () => {
+        if (validateStep(step)) {
+            setStep((s) => Math.min(s + 1, totalSteps));
+        }
+    };
     const prevStep = () => setStep((s) => Math.max(s - 1, 1));
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -63,6 +115,8 @@ const EnhancedContactForm = () => {
             nextStep();
             return;
         }
+
+        if (!validateStep(step)) return;
 
         setIsSubmitting(true);
         setStatus({ type: "", message: "" });
@@ -88,7 +142,9 @@ const EnhancedContactForm = () => {
     };
 
     const inputClasses = "w-full p-4 bg-white/[0.03] backdrop-blur-sm border border-white/10 text-white rounded-xl outline-none focus:border-[#CB52EE]/50 focus:bg-white/[0.05] focus:shadow-[0_0_15px_rgba(203,82,238,0.1)] transition-all placeholder:text-white/20";
+    const inputErrorClasses = "w-full p-4 bg-white/[0.03] backdrop-blur-sm border border-red-500/50 text-white rounded-xl outline-none focus:border-red-400 focus:bg-white/[0.05] focus:shadow-[0_0_15px_rgba(239,68,68,0.1)] transition-all placeholder:text-white/20";
     const labelClasses = "text-sm text-white/50 ml-1 font-outfit uppercase tracking-wider text-[10px]";
+    const errorClasses = "text-red-400 text-[11px] mt-1 ml-1";
 
     const renderStep = () => {
         switch (step) {
@@ -106,31 +162,36 @@ const EnhancedContactForm = () => {
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div className="space-y-2">
-                                <label className={labelClasses}>Prénom</label>
-                                <input type="text" name="prenom" value={formData.prenom} onChange={handleChange} placeholder="Jean" className={inputClasses} required />
+                                <label className={labelClasses}>Prénom *</label>
+                                <input type="text" name="prenom" value={formData.prenom} onChange={handleChange} placeholder="Jean" className={errors.prenom ? inputErrorClasses : inputClasses} />
+                                {errors.prenom && <p className={errorClasses}>{errors.prenom}</p>}
                             </div>
                             <div className="space-y-2">
-                                <label className={labelClasses}>Nom</label>
-                                <input type="text" name="nom" value={formData.nom} onChange={handleChange} placeholder="Dupont" className={inputClasses} required />
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <div className="space-y-2">
-                                <label className={labelClasses}>E-mail Professionnel</label>
-                                <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="contact@entreprise.com" className={inputClasses} required />
-                            </div>
-                            <div className="space-y-2">
-                                <label className={labelClasses}>Téléphone</label>
-                                <input type="tel" name="telephone" value={formData.telephone} onChange={handleChange} placeholder="06 12 34 56 78" className={inputClasses} required />
+                                <label className={labelClasses}>Nom *</label>
+                                <input type="text" name="nom" value={formData.nom} onChange={handleChange} placeholder="Dupont" className={errors.nom ? inputErrorClasses : inputClasses} />
+                                {errors.nom && <p className={errorClasses}>{errors.nom}</p>}
                             </div>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div className="space-y-2">
-                                <label className={labelClasses}>Nom de l'entreprise</label>
-                                <input type="text" name="entreprise" value={formData.entreprise} onChange={handleChange} placeholder="NEOFILM SAS" className={inputClasses} />
+                                <label className={labelClasses}>E-mail Professionnel *</label>
+                                <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="contact@entreprise.com" className={errors.email ? inputErrorClasses : inputClasses} />
+                                {errors.email && <p className={errorClasses}>{errors.email}</p>}
                             </div>
                             <div className="space-y-2">
-                                <label className={labelClasses}>Secteur d'activité</label>
+                                <label className={labelClasses}>Téléphone *</label>
+                                <input type="tel" name="telephone" value={formData.telephone} onChange={handleChange} placeholder="06 12 34 56 78" className={errors.telephone ? inputErrorClasses : inputClasses} />
+                                {errors.telephone && <p className={errorClasses}>{errors.telephone}</p>}
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div className="space-y-2">
+                                <label className={labelClasses}>Nom de l'entreprise *</label>
+                                <input type="text" name="entreprise" value={formData.entreprise} onChange={handleChange} placeholder="NEOFILM SAS" className={errors.entreprise ? inputErrorClasses : inputClasses} />
+                                {errors.entreprise && <p className={errorClasses}>{errors.entreprise}</p>}
+                            </div>
+                            <div className="space-y-2">
+                                <label className={labelClasses}>Secteur d'activité *</label>
                                 <PremiumSelect
                                     options={[
                                         { value: "retail", label: "Commerce / Retail" },
@@ -144,6 +205,7 @@ const EnhancedContactForm = () => {
                                     placeholder="Sélectionnez un secteur"
                                     icon={<Briefcase />}
                                 />
+                                {errors.secteur && <p className={errorClasses}>{errors.secteur}</p>}
                             </div>
                         </div>
                     </motion.div>
@@ -163,7 +225,7 @@ const EnhancedContactForm = () => {
                         </div>
 
                         <div className="space-y-4">
-                            <p className={labelClasses}>Quel type de solution recherchez-vous ?</p>
+                            <p className={labelClasses}>Quel type de solution recherchez-vous ? *</p>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                                 {solutionTypes.map((type) => (
                                     <button
@@ -172,7 +234,9 @@ const EnhancedContactForm = () => {
                                         onClick={() => handleSelect("solution", type.id)}
                                         className={`p-4 rounded-xl border flex flex-col items-center justify-center gap-3 transition-all duration-300 group ${formData.solution === type.id
                                             ? "bg-[#00D8FF]/20 border-[#00D8FF] text-white shadow-[0_0_15px_rgba(0,216,255,0.3)]"
-                                            : "bg-white/[0.03] border-white/10 text-white/50 hover:bg-white/[0.05] hover:border-white/30 hover:text-white"
+                                            : errors.solution
+                                                ? "bg-white/[0.03] border-red-500/50 text-white/50 hover:bg-white/[0.05] hover:border-white/30 hover:text-white"
+                                                : "bg-white/[0.03] border-white/10 text-white/50 hover:bg-white/[0.05] hover:border-white/30 hover:text-white"
                                             }`}
                                     >
                                         <span className="text-2xl group-hover:scale-110 transition-transform duration-300">{type.icon}</span>
@@ -180,10 +244,11 @@ const EnhancedContactForm = () => {
                                     </button>
                                 ))}
                             </div>
+                            {errors.solution && <p className={errorClasses}>{errors.solution}</p>}
                         </div>
 
                         <div className="space-y-4">
-                            <p className={labelClasses}>Où en est votre projet ?</p>
+                            <p className={labelClasses}>Où en est votre projet ? *</p>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                                 {projectPhases.map((phase) => (
                                     <button
@@ -192,7 +257,9 @@ const EnhancedContactForm = () => {
                                         onClick={() => handleSelect("phase", phase.id)}
                                         className={`p-4 rounded-xl border flex items-center gap-3 transition-all duration-300 ${formData.phase === phase.id
                                             ? "bg-[#CB52EE]/20 border-[#CB52EE] text-white shadow-[0_0_15px_rgba(203,82,238,0.3)]"
-                                            : "bg-white/[0.03] border-white/10 text-white/50 hover:bg-white/[0.05] hover:border-white/30 hover:text-white"
+                                            : errors.phase
+                                                ? "bg-white/[0.03] border-red-500/50 text-white/50 hover:bg-white/[0.05] hover:border-white/30 hover:text-white"
+                                                : "bg-white/[0.03] border-white/10 text-white/50 hover:bg-white/[0.05] hover:border-white/30 hover:text-white"
                                             }`}
                                     >
                                         <span className="text-xl">{phase.icon}</span>
@@ -200,6 +267,7 @@ const EnhancedContactForm = () => {
                                     </button>
                                 ))}
                             </div>
+                            {errors.phase && <p className={errorClasses}>{errors.phase}</p>}
                         </div>
                     </motion.div>
                 );
@@ -218,7 +286,7 @@ const EnhancedContactForm = () => {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div className="space-y-2">
-                                <label className={labelClasses}>Emplacement</label>
+                                <label className={labelClasses}>Emplacement *</label>
                                 <PremiumSelect
                                     options={[
                                         { value: "vitrine", label: "Vitrine" },
@@ -230,23 +298,31 @@ const EnhancedContactForm = () => {
                                     placeholder="Sélectionnez..."
                                     icon={<Layers />}
                                 />
+                                {errors.emplacement && <p className={errorClasses}>{errors.emplacement}</p>}
                             </div>
                             <div className="space-y-2">
-                                <label className={labelClasses}>Ville</label>
-                                <input type="text" name="ville" value={formData.ville} onChange={handleChange} placeholder="Paris" className={inputClasses} />
+                                <label className={labelClasses}>Ville *</label>
+                                <input type="text" name="ville" value={formData.ville} onChange={handleChange} placeholder="Paris" className={errors.ville ? inputErrorClasses : inputClasses} />
+                                {errors.ville && <p className={errorClasses}>{errors.ville}</p>}
                             </div>
                         </div>
 
                         <div className="space-y-2">
-                            <label className={labelClasses}>Dimensions (Estimations)</label>
+                            <label className={labelClasses}>Dimensions (Estimations) *</label>
                             <div className="grid grid-cols-2 gap-5">
-                                <div className="relative">
-                                    <input type="text" name="largeur" value={formData.largeur} onChange={handleChange} placeholder="Largeur" className={inputClasses} />
-                                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 text-xs">m</span>
+                                <div>
+                                    <div className="relative">
+                                        <input type="text" name="largeur" value={formData.largeur} onChange={handleChange} placeholder="Largeur" className={errors.largeur ? inputErrorClasses : inputClasses} />
+                                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 text-xs">m</span>
+                                    </div>
+                                    {errors.largeur && <p className={errorClasses}>{errors.largeur}</p>}
                                 </div>
-                                <div className="relative">
-                                    <input type="text" name="hauteur" value={formData.hauteur} onChange={handleChange} placeholder="Hauteur" className={inputClasses} />
-                                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 text-xs">m</span>
+                                <div>
+                                    <div className="relative">
+                                        <input type="text" name="hauteur" value={formData.hauteur} onChange={handleChange} placeholder="Hauteur" className={errors.hauteur ? inputErrorClasses : inputClasses} />
+                                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 text-xs">m</span>
+                                    </div>
+                                    {errors.hauteur && <p className={errorClasses}>{errors.hauteur}</p>}
                                 </div>
                             </div>
                         </div>
@@ -262,7 +338,7 @@ const EnhancedContactForm = () => {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div className="space-y-2">
-                                <label className={labelClasses}>Installation souhaitée</label>
+                                <label className={labelClasses}>Installation souhaitée *</label>
                                 <PremiumSelect
                                     options={[
                                         { value: "asap", label: "Dès que possible" },
@@ -274,9 +350,10 @@ const EnhancedContactForm = () => {
                                     placeholder="Choisir..."
                                     icon={<Clock />}
                                 />
+                                {errors.timing && <p className={errorClasses}>{errors.timing}</p>}
                             </div>
                             <div className="space-y-2">
-                                <label className={labelClasses}>Budget (HT)</label>
+                                <label className={labelClasses}>Budget (HT) *</label>
                                 <PremiumSelect
                                     options={[
                                         { value: "moins-5k", label: "< 5k €" },
@@ -288,6 +365,7 @@ const EnhancedContactForm = () => {
                                     placeholder="Choisir..."
                                     icon={<DollarSign />}
                                 />
+                                {errors.budget && <p className={errorClasses}>{errors.budget}</p>}
                             </div>
                         </div>
 
