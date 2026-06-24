@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ArrowRight, Sparkles } from "lucide-react";
 import ProductCard from "@/components/products/ProductCard";
 import { Product, CategoryInfo } from "@/data/products";
+import { useIsMobile } from "@/lib/useIsMobile";
 
 interface CategorySectionProps {
     category: CategoryInfo;
@@ -16,6 +17,10 @@ const CategorySection: React.FC<CategorySectionProps> = ({ category, products })
     // Parallax Text Effect
     const { scrollYProgress } = useScroll();
     const yParallax = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
+    // Mobile/tablette : pas de décalage horizontal (évite le débordement viewport)
+    const isMobile = useIsMobile();
+    const slideX = (v: number) => (isMobile ? 0 : v);
 
     // Common viewport configuration for re-entrant animations
     const viewportConfig = { once: false, margin: "-100px" };
@@ -48,7 +53,7 @@ const CategorySection: React.FC<CategorySectionProps> = ({ category, products })
                 <div className="grid lg:grid-cols-[1fr_2fr] gap-12 mb-20">
                     {/* Left: Vertical Title + Number */}
                     <motion.div
-                        initial={{ opacity: 0, x: -50 }}
+                        initial={{ opacity: 0, x: slideX(-50) }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={viewportConfig}
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -133,7 +138,7 @@ const CategorySection: React.FC<CategorySectionProps> = ({ category, products })
 
                     {/* Right: Description + Features in Cards */}
                     <motion.div
-                        initial={{ opacity: 0, x: 50 }}
+                        initial={{ opacity: 0, x: slideX(50) }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={viewportConfig}
                         transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}

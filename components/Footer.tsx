@@ -142,7 +142,7 @@ const Footer = () => {
               </div>
               <div className="relative group overflow-hidden rounded-xl border border-white/10 h-48 sm:h-auto">
                 <img
-                  src="/espaceexterieur.png"
+                  src="/Façade led transparent vidéo exterieur.webp"
                   alt="Vitrine LED Haute Luminosité - Retail"
                   className="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out"
                 />

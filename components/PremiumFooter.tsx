@@ -154,7 +154,8 @@ const PremiumFooter = ({ hideAnimation = false }: { hideAnimation?: boolean }) =
                             </div>
                             <div className="space-y-1">
                                 <p className="text-white/40 text-xs tracking-widest uppercase">Parlons-en</p>
-                                <a href="mailto:contact@neofilmled.com" className="text-white text-lg hover:text-[#CB52EE] transition-colors">contact@neofilmled.com</a>
+                                <a href="mailto:contact@neofilmled.fr" className="block text-white text-lg hover:text-[#CB52EE] transition-colors break-words">contact@neofilmled.fr</a>
+                                <a href="mailto:neofilmled@gmail.com" className="block text-white text-lg hover:text-[#CB52EE] transition-colors break-words">neofilmled@gmail.com</a>
                             </div>
                         </div>
                         <div className="mt-12">

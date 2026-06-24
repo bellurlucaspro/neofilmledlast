@@ -60,13 +60,13 @@ const Package = () => {
             </div>
 
             {/* Image à droite */}
-            <div className="flex justify-end items-center mt-4 mr-[-50px]">
+            <div className="flex justify-center sm:justify-end items-center mt-4 mr-0 sm:mr-[-50px]">
               <Image
                 src="/achatfilm.png"
                 alt="Film LED transparent"
                 width={550}
                 height={550}
-                className="rounded-lg shadow-lg"
+                className="rounded-lg shadow-lg w-full max-w-[260px] h-auto sm:max-w-none sm:w-[550px] sm:h-[550px]"
               />
             </div>
           </div>
@@ -148,7 +148,7 @@ const Package = () => {
           <h2 className="text-center text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#F35AFF] to-[#00D8FF] mb-10">
             Choisissez votre package
           </h2>
-          <div className="relative w-full min-h-[40rem] md:min-h-[50rem]">
+          <div className="relative w-full min-h-0 sm:min-h-[42rem] md:min-h-[50rem]">
             <Tabs
               tabs={tabs}
               containerClassName="mb-6"

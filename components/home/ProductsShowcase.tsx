@@ -167,7 +167,7 @@ const ProductsShowcase = () => {
                                 onMouseEnter={() => setActiveCategory(cat)}
                                 onClick={() => setActiveCategory(cat)}
                                 className={cn(
-                                    "w-full relative group p-6 rounded-2xl border transition-all duration-500 overflow-hidden flex items-center gap-6",
+                                    "w-full relative group p-4 sm:p-6 rounded-2xl border transition-all duration-500 overflow-hidden flex items-center gap-3 sm:gap-6",
                                     activeCategory.id === cat.id
                                         ? "bg-white/5 border-white/20 shadow-2xl"
                                         : "bg-transparent border-transparent grayscale opacity-40 hover:opacity-100 hover:grayscale-0"
@@ -184,22 +184,22 @@ const ProductsShowcase = () => {
 
                                 {/* Icon Plate */}
                                 <div className={cn(
-                                    "w-16 h-16 rounded-xl flex items-center justify-center transition-all duration-500 relative z-10",
+                                    "w-12 h-12 sm:w-16 sm:h-16 shrink-0 rounded-xl flex items-center justify-center transition-all duration-500 relative z-10",
                                     activeCategory.id === cat.id ? "bg-white text-black scale-110 shadow-xl" : "bg-white/5 text-white"
                                 )}>
-                                    <cat.icon className="w-8 h-8" />
+                                    <cat.icon className="w-6 h-6 sm:w-8 sm:h-8" />
                                     {activeCategory.id === cat.id && (
                                         <div className="absolute inset-0 rounded-xl animate-ping opacity-20" style={{ backgroundColor: cat.color }} />
                                     )}
                                 </div>
 
-                                <div className="text-left relative z-10 flex-1">
+                                <div className="text-left relative z-10 flex-1 min-w-0">
                                     <div className="text-[10px] font-orbitron font-bold opacity-30 tracking-widest uppercase mb-1">{cat.tagline}</div>
-                                    <h3 className="text-2xl font-black font-orbitron text-white uppercase">{cat.title}</h3>
+                                    <h3 className="text-xl sm:text-2xl font-black font-orbitron text-white uppercase break-words">{cat.title}</h3>
                                 </div>
 
                                 <ChevronRight className={cn(
-                                    "w-6 h-6 transition-all duration-500",
+                                    "w-6 h-6 shrink-0 transition-all duration-500",
                                     activeCategory.id === cat.id ? "text-white translate-x-0" : "text-white/20 -translate-x-4"
                                 )} />
                             </button>

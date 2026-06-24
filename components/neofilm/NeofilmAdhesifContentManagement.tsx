@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Smartphone, Database, Share2, Activity, ShieldCheck, Zap, Calendar, Layout, Image as ImageIcon, Monitor, AlertTriangle, Wifi, Rss, Network, Usb, Cpu } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useIsMobile } from "@/lib/useIsMobile";
 
 interface ContentManagementProps {
     product: any;
@@ -12,6 +13,9 @@ interface ContentManagementProps {
 
 const NeofilmAdhesifContentManagement: React.FC<ContentManagementProps> = ({ product }) => {
     const isRideau = product.slug === 'rideau-led-transparent';
+    // Mobile/tablette : neutralise les décalages horizontaux des animations (anti-débordement)
+    const isMobile = useIsMobile();
+    const slideX = (v: number) => (isMobile ? 0 : v);
 
     const dynamicOperations = React.useMemo(() => [
         {
@@ -65,7 +69,7 @@ const NeofilmAdhesifContentManagement: React.FC<ContentManagementProps> = ({ pro
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 mb-20 border-b border-white/5 pb-10">
                     <div className="max-w-2xl">
                         <motion.div
-                            initial={{ opacity: 0, x: -20 }}
+                            initial={{ opacity: 0, x: slideX(-20) }}
                             whileInView={{ opacity: 1, x: 0 }}
                             className="flex items-center gap-3 font-orbitron text-xs font-bold tracking-[0.3em] uppercase mb-6"
                             style={{ color: product?.color || "#00D8FF" }}
@@ -108,7 +112,7 @@ const NeofilmAdhesifContentManagement: React.FC<ContentManagementProps> = ({ pro
                 <div className="grid lg:grid-cols-12 gap-10 items-stretch min-h-0 lg:min-h-[600px]">
 
                     {/* Operation HUDs Selection */}
-                    <div className="lg:col-span-4 flex flex-col gap-4">
+                    <div className="lg:col-span-4 min-w-0 flex flex-col gap-4">
                         {dynamicOperations.map((op) => (
                             <button
                                 key={op.id}
@@ -200,13 +204,13 @@ const NeofilmAdhesifContentManagement: React.FC<ContentManagementProps> = ({ pro
                     </div>
 
                     {/* Live View Monitor - Spatial Center */}
-                    <div className="lg:col-span-8 relative">
+                    <div className="lg:col-span-8 min-w-0 relative">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={activeOp.id}
-                                initial={{ opacity: 0, rotateY: 15, x: 50 }}
+                                initial={{ opacity: 0, rotateY: 15, x: slideX(50) }}
                                 animate={{ opacity: 1, rotateY: 0, x: 0 }}
-                                exit={{ opacity: 0, rotateY: -15, x: -50 }}
+                                exit={{ opacity: 0, rotateY: -15, x: slideX(-50) }}
                                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                                 className="h-full w-full relative flex flex-col"
                                 style={{ perspective: "1000px" }}
@@ -378,13 +382,13 @@ const NeofilmAdhesifContentManagement: React.FC<ContentManagementProps> = ({ pro
                                 </div>
 
                                 {/* Tech Footer Stats */}
-                                <div className="mt-8 grid grid-cols-3 gap-6">
+                                <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6">
                                     {[
                                         { label: "Stabilité", val: "99.9%" },
                                         { label: "Latence Sync", val: "Haute Vitesse" },
                                         { label: "Couverture", val: "Global" }
                                     ].map((stat, i) => (
-                                        <div key={i} className="p-6 rounded-3xl border border-white/5 bg-white/5 backdrop-blur-md flex flex-col gap-1">
+                                        <div key={i} className="p-4 sm:p-6 rounded-3xl border border-white/5 bg-white/5 backdrop-blur-md flex flex-col gap-1">
                                             <span className="text-[10px] font-orbitron font-bold text-white/30 uppercase tracking-widest">{stat.label}</span>
                                             <span className="text-lg font-black font-orbitron text-white">{stat.val}</span>
                                         </div>
@@ -405,9 +409,9 @@ const NeofilmAdhesifContentManagement: React.FC<ContentManagementProps> = ({ pro
                 <div className="grid lg:grid-cols-12 gap-16 items-start relative">
                     {/* LEFT: HOLOGRAPHIC SOFTWARE SUITE */}
                     <motion.div
-                        initial={{ opacity: 0, x: -50 }}
+                        initial={{ opacity: 0, x: slideX(-50) }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        className="lg:col-span-7 space-y-12"
+                        className="lg:col-span-7 min-w-0 space-y-12"
                     >
                         <div className="space-y-6">
                             <motion.div
@@ -419,7 +423,7 @@ const NeofilmAdhesifContentManagement: React.FC<ContentManagementProps> = ({ pro
                                 <div className="w-1.5 h-1.5 rounded-full bg-[#CB52EE] animate-pulse" />
                                 <span className="text-[10px] font-orbitron font-bold text-[#CB52EE] uppercase tracking-[0.2em]">Core Intelligence v4.0</span>
                             </div>
-                            <h3 className="text-5xl md:text-7xl font-black font-orbitron text-white leading-[1.1] uppercase italic pr-4">
+                            <h3 className="text-3xl sm:text-5xl md:text-7xl font-black font-orbitron text-white leading-[1.1] uppercase italic pr-4 break-words">
                                 Logiciel de <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#CB52EE] to-[#00D8FF] drop-shadow-[0_0_20px_rgba(203,82,238,0.3)] inline-block">Pilotage Dynamique</span>
                             </h3>
@@ -462,12 +466,12 @@ const NeofilmAdhesifContentManagement: React.FC<ContentManagementProps> = ({ pro
 
                     {/* RIGHT: CONNECTIVITY HUB MATRIX */}
                     <motion.div
-                        initial={{ opacity: 0, x: 50 }}
+                        initial={{ opacity: 0, x: slideX(50) }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        className="lg:col-span-5 relative"
+                        className="lg:col-span-5 min-w-0 relative"
                     >
                         <div className="relative p-1 bg-gradient-to-b from-white/10 to-transparent rounded-[3rem]">
-                            <div className="bg-[#030014]/80 backdrop-blur-3xl rounded-[2.9rem] p-10 md:p-14 relative overflow-hidden">
+                            <div className="bg-[#030014]/80 backdrop-blur-3xl rounded-[2.9rem] p-6 sm:p-10 md:p-14 relative overflow-hidden">
                                 {/* Tech Aesthetics */}
                                 <div className="absolute top-0 right-0 p-8 flex flex-col gap-1 items-end opacity-20">
                                     <div className="w-16 h-px bg-white" />

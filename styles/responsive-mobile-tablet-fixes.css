@@ -1,0 +1,122 @@
+/* =============================================================================
+   responsive-mobile-tablet-fixes.css
+   -----------------------------------------------------------------------------
+   Correctifs responsive ISOLÉS — Mobile (<=767px) et Tablette (768px-1024px).
+
+   RÈGLE D'OR :
+   - Aucune règle ne doit exister hors des media queries ci-dessous.
+   - Aucune règle ne doit s'appliquer au-dessus de 1024px.
+   - Le rendu desktop (>=1025px) reste strictement inchangé.
+   - On ne touche à aucun composant : on cible uniquement des sélecteurs
+     déjà présents dans le DOM (ids de section, classes Tailwind générées).
+
+   Chargé via une unique ligne d'import dans app/layout.tsx, APRÈS globals.css,
+   afin que ces règles passent en dernier (priorité d'ordre, même spécificité).
+   ============================================================================= */
+
+
+/* =============================================================================
+   1. GARDE-FOU GLOBAL — Mobile + Tablette (<= 1024px)
+   -----------------------------------------------------------------------------
+   De nombreux "orbes" décoratifs sont en position:absolute avec une largeur
+   fixe (w-[500px] -> w-[800px]) et débordent du viewport, créant un scroll
+   horizontal. Plusieurs sections n'ont pas overflow-hidden.
+   On utilise overflow-x: clip (et non hidden) pour NE PAS casser position:sticky
+   ni transformer l'axe vertical en conteneur de défilement.
+   ============================================================================= */
+@media (max-width: 1024px) {
+
+  html,
+  body {
+    overflow-x: clip;        /* coupe le débordement horizontal sans casser sticky */
+    overflow-x: -webkit-clip;
+    max-width: 100%;
+  }
+
+  /* Médias fluides : aucune image / vidéo ne dépasse son conteneur.
+     (max-width seul : on ne force pas height pour ne pas déformer les
+     images object-cover à hauteur fixe.) */
+  img,
+  video,
+  canvas,
+  svg {
+    max-width: 100%;
+  }
+
+  /* Anti "grid/flex blowout" : par défaut une colonne de grille ou un item
+     flex a min-width:auto et REFUSE de rétrécir sous la largeur de son
+     contenu le plus large → toute la grille déborde et le contenu est coupé
+     à droite. On autorise ces colonnes à rétrécir en mobile/tablette.
+     (Sans effet desktop : règle limitée à <=1024px.) */
+  [class*="col-span"],
+  [class*="lg:col-span"],
+  [class*="md:col-span"] {
+    min-width: 0;
+  }
+}
+
+
+/* =============================================================================
+   2. MOBILE UNIQUEMENT (<= 767px)
+   ============================================================================= */
+@media (max-width: 767px) {
+
+  /* ---------------------------------------------------------------------------
+     2.1 Page /produits/neofilm — composant <Resolution> (#resolution)
+     ---------------------------------------------------------------------------
+     Problème : tout le contenu est en position:absolute (top-10 left-10) au
+     dessus d'un spacer h-[800px]. En mobile le contenu sort du flux, chevauche
+     la section suivante et l'image pixeleds (w-[500px]) débordait.
+     Correctif : on remet le bloc de contenu dans le flux normal et on
+     neutralise le spacer fixe — uniquement en mobile.
+     --------------------------------------------------------------------------- */
+  #resolution .top-10.left-10 {
+    position: static !important;
+    transform: none !important;       /* neutralise le translate inline framer-motion résiduel */
+    padding: 2.5rem 1rem 0;
+  }
+
+  /* L'image de droite décorative est déjà hidden md:block -> rien à faire.
+     On supprime le grand spacer fixe qui n'a plus de raison d'être en flux. */
+  #resolution .h-\[800px\] {
+    height: auto !important;
+  }
+
+  /* L'image pixeleds : fluide et centrée (w-[500px] -> 100%). */
+  #resolution img[src="/pixeleds.png"] {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* ---------------------------------------------------------------------------
+     2.2 Page /produits/neofilm — composant <Chronologie> (#utilisation)
+     ---------------------------------------------------------------------------
+     Problème : mt-[40rem] (640px) compensait le débordement de <Resolution>
+     en desktop. Maintenant que Resolution est remis dans le flux en mobile,
+     ces 640px de vide deviennent un énorme trou. On réduit fortement la marge.
+     --------------------------------------------------------------------------- */
+  #utilisation .mt-\[40rem\] {
+    margin-top: 4rem !important;
+  }
+
+}
+
+
+/* =============================================================================
+   3. TABLETTE UNIQUEMENT (768px - 1024px)
+   ============================================================================= */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  /* ---------------------------------------------------------------------------
+     3.1 Page /produits/neofilm — <Chronologie> (#utilisation)
+     ---------------------------------------------------------------------------
+     mt-[40rem] reste excessif en tablette : on le ramène à une valeur saine.
+     (Resolution garde son layout desktop en >=768 car son image droite
+     md:block s'affiche ; le débordement horizontal éventuel est déjà coupé
+     par le garde-fou overflow-x: clip de la section 1.)
+     --------------------------------------------------------------------------- */
+  #utilisation .mt-\[40rem\] {
+    margin-top: 14rem !important;
+  }
+
+}

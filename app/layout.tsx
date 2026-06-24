@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Outfit, Syne, Orbitron } from "next/font/google";
 
 import "./globals.css";
+import "../styles/responsive-mobile-tablet-fixes.css"; // Correctifs responsive mobile/tablette isolés (media queries <=1024px uniquement) — aucun effet desktop
 import { ThemeProvider } from "./provider";
 import Preloader from "@/components/shared/Preloader";
 import ScrollProvider from "@/components/ScrollProvider";

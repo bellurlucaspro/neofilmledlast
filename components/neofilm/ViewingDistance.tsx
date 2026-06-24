@@ -104,7 +104,7 @@ const ViewingDistance: React.FC<ViewingDistanceProps> = ({ product }) => {
 
                     {/* Left: Pixel Density Visualization */}
                     <div className="lg:col-span-2">
-                        <div className="relative bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 overflow-hidden shadow-2xl min-h-[600px] flex flex-col">
+                        <div className="relative bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-4 sm:p-8 md:p-12 overflow-hidden shadow-2xl min-h-[600px] flex flex-col">
 
                             {/* Glow Effect */}
                             <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-[#00D8FF]/10" style={{ backgroundImage: `linear-gradient(to bottom right, ${product.color}1a, transparent, #00D8FF1a)` }} />
@@ -125,7 +125,7 @@ const ViewingDistance: React.FC<ViewingDistanceProps> = ({ product }) => {
                                 <div className="flex-1 flex items-center justify-center py-8">
                                     <div className="relative group">
                                         {/* Screen Frame */}
-                                        <div className="relative w-72 h-72 md:w-80 md:h-80 bg-black/90 border border-white/10 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,216,255,0.15)] ring-1 ring-white/5">
+                                        <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 bg-black/90 border border-white/10 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,216,255,0.15)] ring-1 ring-white/5">
 
                                             {/* Tech Grid Background */}
                                             <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px]" />
@@ -199,7 +199,7 @@ const ViewingDistance: React.FC<ViewingDistanceProps> = ({ product }) => {
                                             key={activePitch.densityEx}
                                             initial={{ opacity: 0, scale: 0.9, y: 10 }}
                                             animate={{ opacity: 1, scale: 1, y: 0 }}
-                                            className="absolute -top-6 -right-6 z-20"
+                                            className="absolute top-1 right-1 sm:-top-6 sm:-right-6 z-20"
                                         >
                                             <div className="relative">
                                                 <div className="absolute inset-0 bg-[#00D8FF] blur-xl opacity-20 animate-pulse" />

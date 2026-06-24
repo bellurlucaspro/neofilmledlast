@@ -114,7 +114,13 @@ export const FadeInDiv = ({
           animate={{
             y: isActive(tab) ? [0, 40, 0] : 0,
           }}
-          className={cn("w-full h-full absolute top-0 left-0", className)}
+          className={cn(
+            "w-full left-0 top-0",
+            // Mobile : l'onglet actif est dans le flux (hauteur auto, pas de chevauchement).
+            // Desktop (>=sm) : comportement d'origine (empilement absolu).
+            idx === 0 ? "relative h-auto sm:absolute sm:h-full" : "absolute h-full",
+            className
+          )}
         >
           {tab.content}
         </motion.div>

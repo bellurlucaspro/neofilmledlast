@@ -46,13 +46,13 @@ const ProductComparisonTable: React.FC<ProductComparisonTableProps> = ({ product
                     {/* Futuristic Container */}
                     <div className="relative overflow-x-auto rounded-[2rem] border border-white/10 bg-[#030014]/80 backdrop-blur-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] no-scrollbar">
 
-                        <table className="w-full text-left border-collapse min-w-[900px]">
+                        <table className="w-full text-left border-collapse min-w-[520px] sm:min-w-[900px]">
                             <thead>
                                 <tr>
                                     {/* Sidebar Header */}
-                                    <th className="p-8 w-[280px] border-b border-white/5 bg-black/40 sticky left-0 z-40 backdrop-blur-3xl border-r border-white/10">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
+                                    <th className="p-3 w-[130px] sm:p-8 sm:w-[280px] border-b border-white/5 bg-black/40 sticky left-0 z-40 backdrop-blur-3xl border-r border-white/10">
+                                        <div className="flex items-center gap-2 sm:gap-3">
+                                            <div className="hidden sm:flex w-10 h-10 rounded-xl bg-white/5 items-center justify-center border border-white/10 shrink-0">
                                                 <Compass className="w-5 h-5 text-white/40" />
                                             </div>
                                             <div>
@@ -69,14 +69,14 @@ const ProductComparisonTable: React.FC<ProductComparisonTableProps> = ({ product
                                             onMouseEnter={() => setHoveredColumn(idx)}
                                             onMouseLeave={() => setHoveredColumn(null)}
                                             className={cn(
-                                                "p-10 text-center border-b border-white/5 transition-all duration-500 relative min-w-[200px]",
+                                                "p-4 min-w-[120px] sm:p-10 sm:min-w-[200px] text-center border-b border-white/5 transition-all duration-500 relative",
                                                 hoveredColumn === idx ? "bg-white/[0.03]" : "bg-transparent"
                                             )}
                                         >
-                                            <div className="flex flex-col items-center gap-4">
+                                            <div className="flex flex-col items-center gap-2 sm:gap-4">
                                                 <span className="text-[9px] font-orbitron font-black text-white/20 uppercase tracking-[0.3em]">Série</span>
                                                 <motion.h3
-                                                    className="text-3xl font-black font-orbitron tracking-tighter"
+                                                    className="text-xl sm:text-3xl font-black font-orbitron tracking-tighter"
                                                     animate={{ color: hoveredColumn === idx ? product.color : "#ffffff" }}
                                                 >
                                                     {variant.name}
@@ -108,12 +108,12 @@ const ProductComparisonTable: React.FC<ProductComparisonTableProps> = ({ product
                                 {specRows.map((row, rowIdx) => (
                                     <tr key={rowIdx} className="group/row">
                                         {/* Label Side Cell */}
-                                        <td className="p-8 border-b border-white/5 bg-black/40 sticky left-0 z-30 backdrop-blur-3xl border-r border-white/10 transition-colors group-hover/row:bg-white/[0.02]">
-                                            <div className="flex items-center gap-4">
-                                                <div className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/5 flex items-center justify-center text-white/30 group-hover/row:text-white group-hover/row:border-white/20 transition-all duration-500">
+                                        <td className="p-3 sm:p-8 w-[130px] sm:w-auto border-b border-white/5 bg-black/40 sticky left-0 z-30 backdrop-blur-3xl border-r border-white/10 transition-colors group-hover/row:bg-white/[0.02]">
+                                            <div className="flex items-center gap-2 sm:gap-4">
+                                                <div className="hidden sm:flex w-10 h-10 rounded-xl bg-white/[0.03] border border-white/5 items-center justify-center text-white/30 group-hover/row:text-white group-hover/row:border-white/20 transition-all duration-500 shrink-0">
                                                     {row.icon}
                                                 </div>
-                                                <span className="text-[11px] font-orbitron font-black text-white/40 tracking-[0.15em] group-hover/row:text-white transition-colors">
+                                                <span className="text-[10px] sm:text-[11px] font-orbitron font-black text-white/40 tracking-[0.15em] group-hover/row:text-white transition-colors">
                                                     {row.label}
                                                 </span>
                                             </div>
@@ -126,12 +126,12 @@ const ProductComparisonTable: React.FC<ProductComparisonTableProps> = ({ product
                                                 onMouseEnter={() => setHoveredColumn(colIdx)}
                                                 onMouseLeave={() => setHoveredColumn(null)}
                                                 className={cn(
-                                                    "p-8 text-center transition-all duration-500 relative border-b border-white/5",
+                                                    "p-3 sm:p-8 text-center transition-all duration-500 relative border-b border-white/5",
                                                     hoveredColumn === colIdx ? "bg-white/[0.05] text-white scale-[1.02] z-10 shadow-2xl" : "text-white/60"
                                                 )}
                                             >
                                                 <span className={cn(
-                                                    "text-lg font-bold transition-all duration-500",
+                                                    "text-sm sm:text-lg font-bold transition-all duration-500",
                                                     hoveredColumn === colIdx ? "tracking-wider" : "tracking-normal"
                                                 )}>
                                                     {/* @ts-ignore */}

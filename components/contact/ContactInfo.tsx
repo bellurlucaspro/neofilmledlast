@@ -17,7 +17,7 @@ const localBusinessSchema = {
         "addressLocality": "France"
     },
 
-    "email": "contact@neofilmled.com",
+    "email": "contact@neofilmled.fr",
     "url": "https://neofilmled.com",
     "openingHours": "Mo-Fr 09:00-18:00",
     "priceRange": "€€€",
@@ -31,9 +31,16 @@ const contactInfo = [
     {
         icon: Mail,
         title: "Email",
-        value: "contact@neofilmled.com",
+        value: "contact@neofilmled.fr",
         description: "Réponse sous 24h",
-        link: "mailto:contact@neofilmled.com"
+        link: "mailto:contact@neofilmled.fr"
+    },
+    {
+        icon: Mail,
+        title: "Email (secondaire)",
+        value: "neofilmled@gmail.com",
+        description: "Réponse sous 24h",
+        link: "mailto:neofilmled@gmail.com"
     },
 
     {
