@@ -378,7 +378,7 @@ const ProductsShowcase = () => {
                         </div>
                         <div>
                             <div className="text-white font-black font-orbitron text-lg uppercase mb-1">Expertise Européenne</div>
-                            <p className="text-white/40 font-outfit text-sm">Design & Engineering basés à Lille, déploiement global.</p>
+                            <p className="text-white/40 font-outfit text-sm">Design & Engineering basés à Clermont-Ferrand, déploiement global.</p>
                         </div>
                     </div>
 
