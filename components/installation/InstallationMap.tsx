@@ -28,13 +28,13 @@ const globeConfig = {
 };
 
 const sampleArcs = [
-    { order: 1, startLat: 48.8566, startLng: 2.3522, endLat: 40.7128, endLng: -74.0060, arcAlt: 0.3, color: "#00D8FF" }, // Paris -> NY
-    { order: 2, startLat: 48.8566, startLng: 2.3522, endLat: 51.5074, endLng: -0.1278, arcAlt: 0.1, color: "#CB52EE" }, // Paris -> London
-    { order: 3, startLat: 48.8566, startLng: 2.3522, endLat: 52.5200, endLng: 13.4050, arcAlt: 0.1, color: "#00ff88" }, // Paris -> Berlin
-    { order: 4, startLat: 48.8566, startLng: 2.3522, endLat: 43.2965, endLng: 5.3698, arcAlt: 0.1, color: "#FFD700" }, // Paris -> Marseille
-    { order: 5, startLat: 48.8566, startLng: 2.3522, endLat: 45.7640, endLng: 4.8357, arcAlt: 0.1, color: "#00D8FF" }, // Paris -> Lyon
-    { order: 6, startLat: 48.8566, startLng: 2.3522, endLat: 44.8378, endLng: -0.5792, arcAlt: 0.1, color: "#CB52EE" }, // Paris -> Bordeaux
-    { order: 7, startLat: 48.8566, startLng: 2.3522, endLat: 25.2048, endLng: 55.2708, arcAlt: 0.5, color: "#FFD700" }, // Paris -> Dubai
+    { order: 1, startLat: 45.7772, startLng: 3.0870, endLat: 40.7128, endLng: -74.0060, arcAlt: 0.3, color: "#00D8FF" }, // Clermont-Ferrand -> NY
+    { order: 2, startLat: 45.7772, startLng: 3.0870, endLat: 51.5074, endLng: -0.1278, arcAlt: 0.1, color: "#CB52EE" }, // Clermont-Ferrand -> London
+    { order: 3, startLat: 45.7772, startLng: 3.0870, endLat: 52.5200, endLng: 13.4050, arcAlt: 0.1, color: "#00ff88" }, // Clermont-Ferrand -> Berlin
+    { order: 4, startLat: 45.7772, startLng: 3.0870, endLat: 43.2965, endLng: 5.3698, arcAlt: 0.1, color: "#FFD700" }, // Clermont-Ferrand -> Marseille
+    { order: 5, startLat: 45.7772, startLng: 3.0870, endLat: 45.7640, endLng: 4.8357, arcAlt: 0.1, color: "#00D8FF" }, // Clermont-Ferrand -> Lyon
+    { order: 6, startLat: 45.7772, startLng: 3.0870, endLat: 44.8378, endLng: -0.5792, arcAlt: 0.1, color: "#CB52EE" }, // Clermont-Ferrand -> Bordeaux
+    { order: 7, startLat: 45.7772, startLng: 3.0870, endLat: 25.2048, endLng: 55.2708, arcAlt: 0.5, color: "#FFD700" }, // Clermont-Ferrand -> Dubai
 ];
 
 const InstallationMap = () => {

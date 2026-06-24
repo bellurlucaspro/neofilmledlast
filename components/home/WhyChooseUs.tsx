@@ -22,7 +22,7 @@ const expertisePillars = [
     {
         id: "conseil",
         title: "Expertise & Conseil Stratégique",
-        description: "Solution d'ingénierie LED sur-mesure pour vos projets architecturaux à Paris. Analyse photométrique et design structurel pour un impact maximal.",
+        description: "Solution d'ingénierie LED sur-mesure pour vos projets architecturaux à Clermont-Ferrand. Analyse photométrique et design structurel pour un impact maximal.",
         icon: Compass,
         color: "#CB52EE",
         gridClass: "lg:col-span-1",

@@ -33,7 +33,7 @@ const values = [
     {
         icon: Globe,
         title: "Expertise Française",
-        description: "Savoir-faire local basé en Île-de-France pour une maîtrise totale de vos projets.",
+        description: "Savoir-faire local basé à Clermont-Ferrand pour une maîtrise totale de vos projets.",
         className: "md:col-span-1 md:row-span-2",
         color: "#00707E",
         tag: "ORIGIN_FR"

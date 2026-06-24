@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s | NEOFÍLM LED France"
   },
   description: "Expert en solutions LED professionnelles : Film transparent adhésif, rideaux LED, écrans flexibles et totems portables. Transformez vos vitrines et espaces commerciaux avec NEOFÍLM LED. Devis 24h.",
-  keywords: ["écran led transparent", "film led adhésif", "vitrine led", "affichage dynamique", "mur led intérieur", "écran géant led", "neofilm led", "kakemono digital", "totem led", "signalétique digitale paris"],
+  keywords: ["écran led transparent", "film led adhésif", "vitrine led", "affichage dynamique", "mur led intérieur", "écran géant led", "neofilm led", "kakemono digital", "totem led", "signalétique digitale clermont-ferrand"],
   authors: [{ name: "NEOFILM LED" }, { name: "OTIKA AGENCE DIGITALE", url: "https://otika.fr" }],
   creator: "OTIKA AGENCE DIGITALE",
   publisher: "NEOFILM LED",

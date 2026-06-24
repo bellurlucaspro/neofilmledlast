@@ -20,7 +20,7 @@ const items = [
         id: 2,
         title: "Expérience Immersive",
         subtitle: "Installations Premium France",
-        description: "Transformez vos boutiques et showrooms parisiens en destinations visuelles. Nous créons des ambiances LED captivantes qui retiennent l'attention de vos clients et marquent durablement les esprits dans vos points de vente.",
+        description: "Transformez vos boutiques et showrooms clermontois en destinations visuelles. Nous créons des ambiances LED captivantes qui retiennent l'attention de vos clients et marquent durablement les esprits dans vos points de vente.",
         image: "/immersive-led-screen.gif",
         icon: Eye,
         color: "from-[#CB52EE]/80 to-[#00707E]/80"
@@ -29,7 +29,7 @@ const items = [
         id: 3,
         title: "Surfaces Inexploitées",
         subtitle: "Valorisation d'Espaces Commerciaux",
-        description: "Vitrines, murs, escalators, poutres... Nous transformons chaque surface disponible de vos espaces commerciaux parisiens en opportunité de communication LED spectaculaire et rentable. Installation sur-mesure partout en France.",
+        description: "Vitrines, murs, escalators, poutres... Nous transformons chaque surface disponible de vos espaces commerciaux clermontois en opportunité de communication LED spectaculaire et rentable. Installation sur-mesure partout en France.",
         image: "/devanture magasin led.png",
         icon: Maximize,
         color: "from-blue-600/80 to-purple/80"
@@ -97,7 +97,7 @@ const CompanyPresentation = () => {
                 >
                     <p className="text-white/70 text-base md:text-lg leading-relaxed mb-4">
                         Spécialiste de l'<Link href="/film-led-transparent" className="text-white/90 hover:text-purple underline decoration-purple/30 underline-offset-4 transition-colors"><strong>affichage LED transparent et immersif</strong></Link> pour commerces, boutiques et showrooms.
-                        De Paris à toute la France, nous transformons vos <strong className="text-white/90">vitrines, murs et surfaces inexploitées</strong> en
+                        De Clermont-Ferrand à toute la France, nous transformons vos <strong className="text-white/90">vitrines, murs et surfaces inexploitées</strong> en
                         outils de communication vidéo spectaculaires avec nos <Link href="/film-led-transparent/neofilm-adhesif" className="text-white/90 hover:text-purple underline decoration-purple/30 underline-offset-4 transition-colors"><strong>films LED adhésifs</strong></Link> et
                         <Link href="/film-led-transparent/rideau-led-transparent" className="text-white/90 hover:text-purple underline decoration-purple/30 underline-offset-4 transition-colors"><strong className="text-white/90"> rideaux LED modulaires</strong></Link>.
                     </p>
@@ -172,17 +172,17 @@ const CompanyPresentation = () => {
                                                 <p className="text-white/80 leading-relaxed text-base max-w-xl mb-6">
                                                     {item.id === 1 && (
                                                         <>
-                                                            Nous révolutionnons vos espaces commerciaux parisiens avec des <Link href="/film-led-transparent" className="text-purple hover:underline">écrans LED transparents</Link> et modulaires de dernière génération. Une qualité d'image 4K exceptionnelle pour une communication visuelle impactante en Île-de-France.
+                                                            Nous révolutionnons vos espaces commerciaux clermontois avec des <Link href="/film-led-transparent" className="text-purple hover:underline">écrans LED transparents</Link> et modulaires de dernière génération. Une qualité d'image 4K exceptionnelle pour une communication visuelle impactante à Clermont-Ferrand.
                                                         </>
                                                     )}
                                                     {item.id === 2 && (
                                                         <>
-                                                            Transformez vos boutiques et showrooms parisiens en destinations visuelles. Nous créons des <Link href="/mur-led-interieur" className="text-purple hover:underline">ambiances LED captivantes</Link> qui retiennent l'attention de vos clients et marquent durablement les esprits dans vos points de vente.
+                                                            Transformez vos boutiques et showrooms clermontois en destinations visuelles. Nous créons des <Link href="/mur-led-interieur" className="text-purple hover:underline">ambiances LED captivantes</Link> qui retiennent l'attention de vos clients et marquent durablement les esprits dans vos points de vente.
                                                         </>
                                                     )}
                                                     {item.id === 3 && (
                                                         <>
-                                                            Vitrines, murs, escalators, poutres... Nous transformons chaque surface disponible de vos espaces commerciaux parisiens en opportunité de communication LED spectaculaire et rentable. Installation sur-mesure partout en France.
+                                                            Vitrines, murs, escalators, poutres... Nous transformons chaque surface disponible de vos espaces commerciaux clermontois en opportunité de communication LED spectaculaire et rentable. Installation sur-mesure partout en France.
                                                         </>
                                                     )}
                                                 </p>

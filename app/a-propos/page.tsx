@@ -12,7 +12,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "À Propos de NEOFÍLM LED | Fabricant & Intégrateur LED Français",
     description: "Qui sommes-nous ? NEOFÍLM LED réinvente l'espace urbain et commercial grâce à la lumière. +10 ans d'expertise en affichage dynamique et solutions LED transparentes. Un accompagnement de la conception à l'installation.",
-    keywords: "entreprise led france, fabricant écran led, intégrateur solution affichage, histoire neofilm, expert led paris, agence communication visuelle led, installation écran géant france",
+    keywords: "entreprise led france, fabricant écran led, intégrateur solution affichage, histoire neofilm, expert led clermont-ferrand, agence communication visuelle led, installation écran géant france",
     alternates: {
         canonical: "https://neofilmled.com/a-propos"
     }

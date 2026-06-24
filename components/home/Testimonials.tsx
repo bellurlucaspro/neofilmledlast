@@ -9,7 +9,7 @@ const testimonials = [
     {
         quote: "NEOFILM LED a transformé notre vitrine en un véritable outil marketing. L'installation a été rapide et le résultat est spectaculaire. Nos ventes ont augmenté de 35% depuis !",
         name: "Sophie Martin",
-        title: "Directrice - Boutique Luxe Paris",
+        title: "Directrice - Boutique Luxe Clermont-Ferrand",
         rating: 5,
         image: "/testimonial1.jpg"
     },

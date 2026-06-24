@@ -121,7 +121,7 @@ export const categories: Record<ProductCategory, CategoryInfo> = {
         seo: {
             title: 'Mur LED Intérieur & Écran Souple | Solutions Affichage Dynamique - NEOFÍLM',
             description: 'Dynamisez vos espaces intérieurs avec nos Murs LED Haute Définition et Écrans Flexibles 360°. Solutions d\'affichage digital pour centres commerciaux, boutiques et halls d\'entreprise.',
-            keywords: 'mur led intérieur, écran led flexible, affichage dynamique magasin, colonne led, écran led courbe, digital signage paris, mur d\'images led, neofilm dynamique'
+            keywords: 'mur led intérieur, écran led flexible, affichage dynamique magasin, colonne led, écran led courbe, digital signage clermont-ferrand, mur d\'images led, neofilm dynamique'
         }
     },
     portable: {

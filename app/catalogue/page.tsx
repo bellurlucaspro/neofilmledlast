@@ -134,7 +134,7 @@ function CatalogueContent() {
                             </div>
                             <div className="text-right">
                                 <p className="font-orbitron font-bold text-white/80 tracking-widest text-sm">NEOFILM LED SYSTEMS</p>
-                                <p className="font-outfit text-white/40 text-xs mt-1">PARIS • MONACO • GENÈVE</p>
+                                <p className="font-outfit text-white/40 text-xs mt-1">CLERMONT-FERRAND • MONACO • GENÈVE</p>
                             </div>
                         </div>
                     </div>

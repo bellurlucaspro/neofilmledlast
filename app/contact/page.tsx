@@ -10,8 +10,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Contact NEOFÍLM LED | Devis Écran LED & Étude de Projet Gratuite",
-    description: "Un projet d'affichage ? Contactez nos experts LED pour une étude personnalisée et un devis gratuit sous 24h. Showroom à Paris. Installation partout en France et Europe.",
-    keywords: "contact neofilm, devis écran led, prix vitrine led, installateur led france, maintenance écran géant, étude projet affichage dynamique, showroom led paris",
+    description: "Un projet d'affichage ? Contactez nos experts LED pour une étude personnalisée et un devis gratuit sous 24h. Showroom à Clermont-Ferrand. Installation partout en France et Europe.",
+    keywords: "contact neofilm, devis écran led, prix vitrine led, installateur led france, maintenance écran géant, étude projet affichage dynamique, showroom led clermont-ferrand",
     alternates: {
         canonical: "https://neofilmled.com/contact"
     }

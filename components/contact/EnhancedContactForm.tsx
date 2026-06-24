@@ -302,7 +302,7 @@ const EnhancedContactForm = () => {
                             </div>
                             <div className="space-y-2">
                                 <label className={labelClasses}>Ville *</label>
-                                <input type="text" name="ville" value={formData.ville} onChange={handleChange} placeholder="Paris" className={errors.ville ? inputErrorClasses : inputClasses} />
+                                <input type="text" name="ville" value={formData.ville} onChange={handleChange} placeholder="Clermont-Ferrand" className={errors.ville ? inputErrorClasses : inputClasses} />
                                 {errors.ville && <p className={errorClasses}>{errors.ville}</p>}
                             </div>
                         </div>

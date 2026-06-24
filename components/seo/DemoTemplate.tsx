@@ -62,8 +62,8 @@ export const DemoTemplate: React.FC<DemoTemplateProps> = ({ product, category })
                                     <div className="grid sm:grid-cols-2 gap-4">
                                         <div className="bg-white/5 border border-white/10 p-4 rounded-xl">
                                             <Eye className="w-6 h-6 text-purple mb-2" />
-                                            <h3 className="font-bold text-white mb-1">Showroom Paris</h3>
-                                            <p className="text-xs text-white/60">Venez voir nos écrans en action dans notre showroom parisien sur rendez-vous.</p>
+                                            <h3 className="font-bold text-white mb-1">Showroom Clermont-Ferrand</h3>
+                                            <p className="text-xs text-white/60">Venez voir nos écrans en action dans notre showroom clermontois sur rendez-vous.</p>
                                         </div>
                                         <div className="bg-white/5 border border-white/10 p-4 rounded-xl">
                                             <Play className="w-6 h-6 text-purple mb-2" />

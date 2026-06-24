@@ -65,7 +65,7 @@ export async function generateMetadata({
         description = `Quel est le prix du ${product.name} ? Obtenez votre devis gratuit en 24h. Tarifs transparents, installation incluse. Estimation immédiate.`;
     } else if (type === 'demo') {
         title = `Démonstration ${product.name} | Testez nos Écrans LED - NEOFILM`;
-        description = `Réservez votre démonstration gratuite du ${product.name}. Showroom Paris ou Visio-live. Découvrez la transparence et la luminosité de nos écrans.`;
+        description = `Réservez votre démonstration gratuite du ${product.name}. Showroom Clermont-Ferrand ou Visio-live. Découvrez la transparence et la luminosité de nos écrans.`;
     }
 
     return {

@@ -27,7 +27,7 @@ const PremiumFooter = dynamic(() => import("@/components/PremiumFooter"), {
 export const metadata = {
   title: "NEOFILM LED | Affichage LED Transparent, Vitrine Digitale & Écrans Géants",
   description: "Leader français de l'affichage LED innovant. Spécialiste du film LED transparent adhésif pour vitrine, murs LED indoor et écrans géants portables. Transformez votre communication visuelle avec NEOFÍLM.",
-  keywords: "affichage led transparent, film led vitrine, écran transparent adhésif, mur led intérieur, écran géant led, publicité digitale vitrine, neofilm led, signalétique lumineuse innovante, écran led souple, paris, france",
+  keywords: "affichage led transparent, film led vitrine, écran transparent adhésif, mur led intérieur, écran géant led, publicité digitale vitrine, neofilm led, signalétique lumineuse innovante, écran led souple, clermont-ferrand, france",
   alternates: {
     canonical: "https://neofilmled.com"
   },
